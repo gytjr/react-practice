@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Info from "./Info.js";
+import Average from "./Average.js";
 
 const App = () => {
-  return <Info></Info>;
+  return <Average></Average>;
 };
 
 export default App;
