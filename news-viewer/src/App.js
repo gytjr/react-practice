@@ -1,15 +1,18 @@
 import './App.css';
 import { useState } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 function App() {
   const [data, setData] = useState(null);
-  const onClick = () => {
-    Axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
-      (response) => {
-        setData(response.data);
-      },
-    );
+  const onClick = async () => {
+    try {
+      const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/todos/1',
+      );
+      setData(response.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
