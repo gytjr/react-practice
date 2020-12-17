@@ -14,7 +14,7 @@ function App() {
     (e) => {
       const { name, value } = e.target;
       setForm(
-        produce(form, (draft) => {
+        produce((draft) => {
           draft[name] = value;
         })
       );
@@ -32,7 +32,7 @@ function App() {
       };
 
       setData(
-        produce(data, (draft) => {
+        produce((draft) => {
           draft.array.push(info);
         })
       );
@@ -48,7 +48,7 @@ function App() {
   const onRemove = useCallback(
     (id) => {
       setData(
-        produce(data, (draft) => {
+        produce((draft) => {
           draft.array.splice(
             draft.array.findIndex((info) => info.id === id),
             1
