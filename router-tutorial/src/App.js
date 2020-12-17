@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Profiles from "./Profiles";
@@ -23,10 +23,21 @@ function App() {
           <Link to="/history">History 예제</Link>
         </li>
       </ul>
-      <Route path="/" component={Home} exact={true} />
-      <Route path={["/about", "/info"]} component={About} />
-      <Route path="/profiles" component={Profiles} />
-      <Route path="/history" component={HistorySample} />
+      <Switch>
+        <Route path="/" component={Home} exact={true} />
+        <Route path={["/about", "/info"]} component={About} />
+        <Route path="/profiles" component={Profiles} />
+        <Route path="/history" component={HistorySample} />
+        //path를 따로 정의하지 않으면 모든 상황에 렌더링됨
+        <Route
+          render={({ location }) => (
+            <div>
+              <h2>이 페이지는 존재하지 않습니다.</h2>
+              <p>{location.pathname}</p>
+            </div>
+          )}
+        />
+      </Switch>
     </div>
   );
 }
